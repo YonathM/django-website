@@ -12,6 +12,9 @@ venv/
 env/
 *.env
 
+# Environment variables
+.env
+
 # Django
 *.log
 *.pot
@@ -22,40 +25,10 @@ media/
 # Static files (collectstatic)
 staticfiles/
 
-# IDE settings
+# IDE/editor settings
 .vscode/
 .idea/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Python
-__pycache__/
-*.py[cod]
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-
-# Virtual environments
-venv/
-env/
-*.env
-
-# Django
-*.log
-*.pot
-*.pyc
-db.sqlite3
-media/
-staticfiles/
-
-# IDE/editor
-.vscode/
-.idea/
-
-# OS
+# OS files
 .DS_Store
 Thumbs.db
