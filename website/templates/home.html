@@ -100,61 +100,35 @@
     <section id="why-us" class="section why-us">
 
       <div class="container">
- <h1 class="text-center text-primary">Latest News</h1>
+        <h1 class="text-center text-primary">Latest News</h1>
         <div class="row gy-4">
-
+          {% for news in news_items %}
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-           
-              <h3>የስራ ዓውደ ርዕይ ሳምንት</h3>
-                <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
-              <div class="text-center">
-  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
-  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
-</div>
-          </div><!-- End Why Box -->
+          <h6> <a href="#" style="font-weight: bold; color: black;">{{ news.title }}</a></h6>
+            {% if news.image %}
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid">
+            {% endif %}
+            {% if news.video %}
+  <video width="100%" controls>
+    <source src="{{ news.video.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{% endif %}
 
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="col-xl-4">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                   <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
-                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
-                 <div class="text-center">
-  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
-  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
-</div>
-          </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                 <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
-                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
-                  <div class="text-center">
-  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
-  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
-</div>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                 <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
-                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
-                 <div class="text-center">
-  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
-  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
-</div>
-              </div><!-- End Icon Box -->
-
+            <p>{{ news.content|truncatewords:10 }}</p>
+            <div class="text-center">
+              <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
+              <span class="more-btn d-block">{{ news.published_date|date:"M d, Y" }}</span>
             </div>
-          </div>
-
-        </div>
-
-      </div>
-
+          </div><!-- End news item -->
+          {% empty %}
+          <p>No news available at the moment.</p>
+          {% endfor %}
+        </div>  
+        <div class="text-center mt-4">
+  <a href="" class="btn btn-primary">View More News</a>
+</div>
+</div>
     </section><!-- /Why Us Section -->
 
     <!-- Features Section -->
