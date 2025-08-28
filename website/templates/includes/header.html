@@ -1,0 +1,74 @@
+    {% load static i18n %}
+<header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto">
+        <!-- Logo -->
+      <img src="{% static 'img/dtptclogo.jpg' %}" alt="Logo" class="img-fluid" style="height:50px;">
+
+      <!-- Divider -->
+      <div class="vr mx-3"></div>
+
+      <!-- College Name -->
+         <!-- College Name -->
+    <div class="d-flex flex-column">
+      <small class="text-success fw-bold">ደብረ ታቦር ፖሊ ቴክኒክ ኮሌጅ</small>
+      <small class="text-success fw-bold">DEBRE TABOR POLYTECHNIC COLLEGE</small>
+    </div>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+           <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+          <li class="dropdown"><a href="#"><span>Latest</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Announcements</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+             <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">DTPTC Overview</a></li>
+             <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">Mission and Visson</a></li>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Acadamics</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Departments</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Web Development</a></li>
+                  <li><a href="#">Automotive</a></li>
+                  <li><a href="#">Fashion Design</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+             <li class="dropdown"><a href="#"><span>Admissions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Admission</a></li>
+              <li><a href="#">Tution and Service Fees</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Announcements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">For Staff</a></li>
+              <li><a href="#">For Students</a></li>
+              <li><a href="#">Vacancies</a></li>
+            </ul>
+          </li>
+        
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        
+      </nav>
+  <!-- Language Switcher -->
+        <form action="{% url 'set_language' %}" method="post" class="d-flex ms-auto">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()" class="form-select form-select-sm">
+                <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>{% trans "English" %}</option>
+                <option value="am" {% if LANGUAGE_CODE == 'am' %}selected{% endif %}>{% trans "Amharic" %}</option>
+            </select>
+        </form>
+    </div>
+  </header>

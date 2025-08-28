@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include 'includes/head.html' %}
+  {% load static %}
+  {% load static i18n %}
+<body class="index-page">
+  {% include 'includes/header.html' %}
+  {% block content %}
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <img src="{% static 'img/662A5231.jpg' %}" alt="" data-aos="fade-in">
+
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Dedicated to providing high-quality technical and vocational training that meets industry standards and prepares students for successful careers.</p>
+        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="courses.html" class="btn-get-started">Get Started</a>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+<!-- About Section -->
+<section id="about" class="about section">
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <img src="{% static 'img/662A5223.jpg' %}" class="img-fluid" alt="College Image">
+      </div>
+
+      <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+       <h3>Excellence in Education and Skill Development</h3>
+        <p class="fst-italic">
+  Debre Tabor Polytechnic College is committed to providing high-quality education, practical training, and professional development to prepare students for successful careers.
+</p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Practical and hands-on learning opportunities for students.</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Qualified faculty dedicated to student success.</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>State-of-the-art facilities and modern laboratories to support advanced learning.</span></li>
+        </ul>
+        <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+
+    <!-- Counts Section -->
+    <section id="counts" class="section counts light-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+ <h1 class="text-center text-primary">Statistics</h1>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Active Trainees</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Staff</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
+              <p>No. of Department</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+              <p>No. of Graduates</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Counts Section -->
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="section why-us">
+
+      <div class="container">
+ <h1 class="text-center text-primary">Latest News</h1>
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+           
+              <h3>የስራ ዓውደ ርዕይ ሳምንት</h3>
+                <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
+              <div class="text-center">
+  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
+  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
+</div>
+          </div><!-- End Why Box -->
+
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="col-xl-4">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                   <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
+                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
+                 <div class="text-center">
+  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
+  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
+</div>
+          </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                 <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
+                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
+                  <div class="text-center">
+  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
+  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
+</div>
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                 <img src="{% static 'img/news1.jpg' %}" class="img-fluid" alt="">
+                  <h4>ሳምንታዊው የወርቃማ ሰኞ የዕውቀት ሽግግር መርሀ ግብር መካሄድ ጀመረ።</h4>
+                 <div class="text-center">
+  <a href="#" class="more-btn d-block mb-2"><span>Read More</span></a>
+  <a href="#" class="more-btn d-block"><span>Aug 07, 2025</span></a>
+</div>
+              </div><!-- End Icon Box -->
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Why Us Section -->
+
+    <!-- Features Section -->
+    
+    <!-- Courses Section -->
+<section id="courses" class="courses section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Academics</h2>
+    <p>Academics Departments</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <!-- Swiper container -->
+    <div class="swiper courses-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Course Slide -->
+        <div class="swiper-slide">
+          <div class="course-item">
+            <img src="{% static 'img/course-1.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <p class="category">Web Development</p>
+              <h3><a href="course-details.html">Website Design</a></h3>
+              <p class="description">Et architecto provident deleniti facere repellat nobis iste.</p>
+              <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;50</div>
+            </div>
+          </div>
+        </div><!-- End Slide -->
+ <!-- Course Slide -->
+        <div class="swiper-slide">
+          <div class="course-item">
+            <img src="{% static 'img/course-1.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <p class="category">Web Development</p>
+              <h3><a href="course-details.html">Website Design</a></h3>
+              <p class="description">Et architecto provident deleniti facere repellat nobis iste.</p>
+              <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;50</div>
+            </div>
+          </div>
+        </div><!-- End Slide -->
+ <!-- Course Slide -->
+        <div class="swiper-slide">
+          <div class="course-item">
+            <img src="{% static 'img/course-1.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <p class="category">Web Development</p>
+              <h3><a href="course-details.html">Website Design</a></h3>
+              <p class="description">Et architecto provident deleniti facere repellat nobis iste.</p>
+              <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;50</div>
+            </div>
+          </div>
+        </div><!-- End Slide -->
+
+        <!-- Course Slide -->
+        <div class="swiper-slide">
+          <div class="course-item">
+            <img src="{% static 'img/manufacturing.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <p class="category">Manufacturing</p>
+              <h3><a href="course-details.html">Search Engine Optimization</a></h3>
+              <p class="description">Et architecto provident deleniti facere repellat nobis iste.</p>
+              <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;35</div>
+            </div>
+          </div>
+        </div><!-- End Slide -->
+
+        <!-- Course Slide -->
+        <div class="swiper-slide">
+          <div class="course-item">
+            <img src="{% static 'img/auto.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <p class="category">Automotive</p>
+              <h3><a href="course-details.html">Overview</a></h3>
+              <p class="description">Et architecto provident deleniti facere repellat nobis iste.</p>
+              <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;20</div>
+            </div>
+          </div>
+        </div><!-- End Slide -->
+
+      </div><!-- /swiper-wrapper -->
+
+      <!-- Pagination + Navigation -->
+      <div class="swiper-pagination"></div>
+      <!-- Swiper Config -->
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": { "delay": 5000 },
+          "slidesPerView": 3,
+          "spaceBetween": 40,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "breakpoints": {
+            "320": { "slidesPerView": 1, "spaceBetween": 20 },
+            "768": { "slidesPerView": 2, "spaceBetween": 20 },
+            "1200": { "slidesPerView": 3, "spaceBetween": 30 }
+          }
+        }
+      </script>
+    </div><!-- /swiper -->
+
+  </div>
+
+</section><!-- /Courses Section -->
+
+
+    <!-- Trainers Index Section -->
+    <section id="trainers-index" class="section trainers-index">
+ <h1 class="text-center text-primary">Testimonials</h1>
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="{% static 'img/trainers/b.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Birksaw Ayalew</h4>
+                <span>Web Development</span>
+                <p>
+                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                </p>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="{% static 'img/trainers/ab.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Abeba Wagaye</h4>
+                <span>Marketing</span>
+                <p>
+                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                </p>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="{% static 'img/trainers/a.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Amare Amare</h4>
+                <span>Content</span>
+                <p>
+                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                </p>
+                
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Trainers Index Section -->
+
+  </main>
+  {% endblock %}
+  {% include 'includes/footer.html' %}
+
+</body>
+</html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.swiper').forEach(function(swiperEl) {
+    let configEl = swiperEl.querySelector('.swiper-config');
+    let config = {};
+    if (configEl) {
+      try { 
+        config = JSON.parse(configEl.textContent); 
+      } catch (e) { 
+        console.error("Invalid Swiper config JSON", e); 
+      }
+    }
+
+    // Initialize swiper
+    let swiper = new Swiper(swiperEl, config);
+
+    // ✅ Pause on hover
+    swiperEl.addEventListener("mouseenter", function() {
+      if (swiper.autoplay) swiper.autoplay.stop();
+    });
+    swiperEl.addEventListener("mouseleave", function() {
+      if (swiper.autoplay) swiper.autoplay.start();
+    });
+  });
+});
+</script>
