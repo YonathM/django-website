@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+{% block title %}{{ vacancy.title }} - Warka Solutions{% endblock %}
+
+{% block content %}
+<main class="main">
+  <div class="container">
+    <h1>{{ vacancy.title }}</h1>
+    <p>{{ vacancy.description }}</p>
+    {% if vacancy.requirements %}
+    <h5>Requirements:</h5>
+    <p>{{ vacancy.requirements }}</p>
+    {% endif %}
+    <p><strong>Published Date:</strong> {{ vacancy.published_date|date:"M d, Y" }}</p>
+    {% if vacancy.application_deadline %}
+    <p><strong>Application Deadline:</strong> {{ vacancy.application_deadline|date:"M d, Y" }}</p>
+    {% endif %}
+    {% if vacancy.attachment %}
+    <a href="{{ vacancy.attachment.url }}" download>Download Attachment</a>
+    {% endif %}
+    <a href="{% url 'vacancy_list' %}" class="btn btn-sm btn-outline-primary mt-3">Back</a>
+  </div>
+</main>
+{% endblock %}

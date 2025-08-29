@@ -1,0 +1,56 @@
+{% extends 'home.html' %}
+{% block title %}
+About - Warka Solutions
+{% endblock %}
+
+{% load static %}
+ {% block content %}
+  <main class="main">
+<style>.justify-text {
+  text-align: justify;      /* Justify the text */
+  margin-bottom: 1rem;      /* Add space between paragraphs */
+  line-height: 1.6;         /* Improve readability */
+}
+</style>
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify">
+            <div class="col-lg-12">
+              <h1  class="justify-text" style="font-weight: bold;">{{ news.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div><!-- End Page Title -->
+
+    <!-- About Us Section -->
+    <section id="about-us" class="section about-us">
+    <div class="container">
+        <div class="row gy-4">
+    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        {% if news.image %}
+        <img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid">
+        {% endif %}
+        </div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        {% if news.video %}
+        <video width="100%" controls>    
+        <source src="{{ news.video.url }}" type="video/mp4">    
+        Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        </div>
+    <div class="row d-flex justify">
+        <p class="justify-text">{{ news.content }}</p>
+        <p class="justify-text">
+        <strong>Published Date:</strong> {{ news.published_date|date:"M d, Y" }}</p>
+    </div>
+</div>
+</div>
+</section><!-- /About Us Section -->
+</main>
+  {% endblock %}
+  

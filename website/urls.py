@@ -11,5 +11,10 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('events/', views.events, name='events'),
     path('contact/', views.contact, name='contact'),
+    path('news/', views.news_list, name='news_list'),          # News listing page
+     # News detail page
+    path('news/<int:news_id>/', views.selectedNews, name='news_detail'),
+    path('vacancies/', views.vacancy_list, name='vacancy_list'),
+    path('vacancies/<int:vacancy_id>/', views.vacancy_detail, name='vacancy_detail'),
 ]
 

@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+{% block title %}Latest News{% endblock %}
+
+{% block content %}
+<main class="main">
+
+  <section class="section news-list">
+    <div class="container">
+      <h6 class="text-center text-primary mb-4">Latest News</h6>
+      <div class="row gy-4">
+        {% for news in page_obj %}
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <h6>
+            <a href="{% url 'news_detail' news.id %}" style="font-weight: bold; color: black;">
+              {{ news.title }}
+            </a>
+          </h6>
+          {% if news.image %}
+          <a href="{% url 'news_detail' news.id %}"><img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid"></a>
+          {% endif %}
+          {% if news.video %}
+          <video width="100%" controls>
+            <source src="{{ news.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          {% endif %}
+          <p>{{ news.content|truncatewords:15 }}</p>
+          <div class="text-center">
+            <a href="{% url 'news_detail' news.id %}" class="more-btn d-block mb-2"><span>Read More</span></a>
+            <span class="more-btn d-block">{{ news.published_date|date:"M d, Y" }}</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>No news available.</p>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination justify-content-center mt-4">
+        <nav aria-label="News pagination">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}

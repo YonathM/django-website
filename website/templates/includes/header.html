@@ -1,4 +1,59 @@
     {% load static i18n %}
+  
+  <style>
+ /* Mega menu container */
+.dropdown-menu.mega-menu {
+  display: flex !important;        /* side by side columns */
+  flex-wrap: nowrap;
+  gap: 0;                           /* spacing via border */
+  padding: 16px 0;
+  position: absolute !important;
+  left: 0;
+  min-width: 400px;
+  max-width: 90vw;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+/* Columns */
+.dropdown-menu.mega-menu .mega-col {
+  flex: 1 1 200px;                 /* minimum 200px width, grow if needed */
+  padding: 0 20px;
+  border-right: 1px solid #ddd;    /* vertical separator */
+}
+
+/* Remove border for last column */
+.dropdown-menu.mega-menu .mega-col:last-child {
+  border-right: none;
+}
+
+/* Column header */
+.dropdown-menu.mega-menu .dropdown-header {
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Links inside column */
+.dropdown-menu.mega-menu .dropdown-item {
+  display: block;
+  padding: 6px 0;                  /* ✅ add gap between items */
+  white-space: normal;              /* wrap long text */
+  word-wrap: break-word;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Hover effect only on the link hovered */
+.dropdown-menu.mega-menu .dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+</style>
+
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto">
@@ -20,8 +75,8 @@
            <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
           <li class="dropdown"><a href="#"><span>Latest</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Announcements</a></li>
+           <li><a href="{% url 'home' %}#latestnews">News</a></li>
+            <li><a href="#">Announcements</a></li>
             </ul>
           </li>
           
@@ -32,17 +87,41 @@
               </li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Acadamics</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li class="dropdown"><a href="#"><span>Departments</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Web Development</a></li>
-                  <li><a href="#">Automotive</a></li>
-                  <li><a href="#">Fashion Design</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+     <li class="dropdown">
+  <a href="#" class="nav-link" data-bs-toggle="dropdown">
+    <span>Academics</span>
+    <i class="bi bi-chevron-down toggle-dropdown"></i>
+  </a>
+
+  <ul class="dropdown-menu mega-menu">
+    <!-- Column 1: Departments -->
+    <li class="mega-col">
+    <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Departments</span></a>
+      {% for dept in header_departments %}
+        <a class="dropdown-item" href="{% url 'home' %}#dept-{{ dept.id }}">
+          {{ dept.name|title }}
+        </a>
+      {% empty %}
+        <span class="dropdown-item-text text-muted">No departments available</span>
+      {% endfor %}
+    </li>
+
+    <!-- Column 2: Industry Extension -->
+    <li class="mega-col">
+    <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Industry Extension</span></a>
+      {% for dept in header_departments %}
+        <a class="dropdown-item" href="{% url 'home' %}#dept-{{ dept.id }}">
+          {{ dept.name|title }}
+        </a>
+      {% empty %}
+        <span class="dropdown-item-text text-muted">No departments available</span>
+      {% endfor %}
+    </li>
+
+  </ul>
+</li>
+
+
              <li class="dropdown"><a href="#"><span>Admissions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Calendar</a></li>
@@ -54,7 +133,7 @@
             <ul>
               <li><a href="#">For Staff</a></li>
               <li><a href="#">For Students</a></li>
-              <li><a href="#">Vacancies</a></li>
+             <li><a href="{% url 'vacancy_list' %}">Vacancies</a></li>
             </ul>
           </li>
         
@@ -62,13 +141,13 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         
       </nav>
-  <!-- Language Switcher -->
+  <!-- Language Switcher 
         <form action="{% url 'set_language' %}" method="post" class="d-flex ms-auto">
             {% csrf_token %}
             <select name="language" onchange="this.form.submit()" class="form-select form-select-sm">
                 <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>{% trans "English" %}</option>
                 <option value="am" {% if LANGUAGE_CODE == 'am' %}selected{% endif %}>{% trans "Amharic" %}</option>
             </select>
-        </form>
+        </form> -->
     </div>
   </header>
