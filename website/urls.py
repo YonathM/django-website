@@ -9,6 +9,7 @@ admin.site.site_title = "Admin Panel"
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+    path('missionandvision/', views.missionandvision, name='missionandvision'),
     path('events/', views.events, name='events'),
     path('contact/', views.contact, name='contact'),
     path('news/', views.news_list, name='news_list'),          # News listing page
@@ -16,5 +17,6 @@ urlpatterns = [
     path('news/<int:news_id>/', views.selectedNews, name='news_detail'),
     path('vacancies/', views.vacancy_list, name='vacancy_list'),
     path('vacancies/<int:vacancy_id>/', views.vacancy_detail, name='vacancy_detail'),
+   path("department/<int:pk>/", views.department_detail, name="department"),
 ]
 

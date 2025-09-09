@@ -33,6 +33,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 DATABASES = {
     'default': dj_database_url.parse(config('DATABASE_URL'))
 }
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -135,3 +137,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

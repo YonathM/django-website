@@ -76,15 +76,15 @@
           <li class="dropdown"><a href="#"><span>Latest</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
            <li><a href="{% url 'home' %}#latestnews">News</a></li>
-            <li><a href="#">Announcements</a></li>
             </ul>
           </li>
           
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
              <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">DTPTC Overview</a></li>
-             <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">Mission and Visson</a></li>
-              </li>
+             <li><a href="{% url 'missionandvision' %}" class="{% if request.path == '/missionandvision/' %}active{% endif %}">Mission and Visson</a></li>
+            <li><a href="{% url 'contact' %}">Contact US</a></li>
+            </li>
             </ul>
           </li>
      <li class="dropdown">
@@ -98,7 +98,7 @@
     <li class="mega-col">
     <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Departments</span></a>
       {% for dept in header_departments %}
-        <a class="dropdown-item" href="{% url 'home' %}#dept-{{ dept.id }}">
+        <a class="dropdown-item" href="{% url 'department' dept.pk %}">
           {{ dept.name|title }}
         </a>
       {% empty %}
@@ -110,7 +110,7 @@
     <li class="mega-col">
     <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Industry Extension</span></a>
       {% for dept in header_departments %}
-        <a class="dropdown-item" href="{% url 'home' %}#dept-{{ dept.id }}">
+        <a class="dropdown-item" href="{% url 'department' dept.pk %}">
           {{ dept.name|title }}
         </a>
       {% empty %}

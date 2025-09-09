@@ -141,11 +141,11 @@
           <div class="swiper-slide">
             <div class="course-item">
               {% if dept.image %}
-                <img src="{{ dept.image.url }}" class="img-fluid" alt="{{ dept.name }}">
+                <a href="{% url 'department' dept.pk %}"><img src="{{ dept.image.url }}" class="img-fluid" alt="{{ dept.name }}"></a>
               {% endif %}
 
               <div class="course-content">
-                <h3><a href="#">{{ dept.name }}</a></h3>
+                <h3><a href="{% url 'department' dept.pk %}">{{ dept.name }}</a></h3>
                 <p class="description">{{ dept.description|truncatewords:15 }}</p>
                 <div class="trainer-rank"><i class="bi bi-person user-icon"></i>&nbsp;50</div>
               </div>
