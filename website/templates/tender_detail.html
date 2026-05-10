@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+{% block title %}{{ tender.title }} - Warka Solutions{% endblock %}
+
+{% block content %}
+<main class="main">
+  <div class="container">
+    <h1>{{ tender.title }}</h1>
+    <p>{{ tender.description }}</p>
+    {% if tender.requirements %}
+    <h5>Requirements:</h5>
+    <p>{{ tender.requirements }}</p>
+    {% endif %}
+    <p><strong>Published Date:</strong> {{ tender.published_date|date:"M d, Y" }}</p>
+    {% if tender.application_deadline %}
+    <p><strong>Application Deadline:</strong> {{ tender.application_deadline|date:"M d, Y" }}</p>
+    {% endif %}
+    {% if tender.attachment %}
+    <a href="{{ tender.attachment.url }}" download>Download Attachment</a>
+    {% endif %}
+    <a href="{% url 'tender_list' %}" class="btn btn-sm btn-outline-primary mt-3">Back</a>
+  </div>
+</main>
+{% endblock %}

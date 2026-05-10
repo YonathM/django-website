@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+{% block title %}{{ digital_library.title }} - Warka Solutions{% endblock %}
+
+{% block content %}
+<main class="main">
+  <div class="container">
+    <h1>{{ digital_library.title }}</h1>
+    <p>{{ digital_library.description }}</p>
+
+    <p><strong>Published Date:</strong> {{ digital_library.published_date|date:"M d, Y" }}</p>
+
+    {% if digital_library.attachment %}
+      <a href="{{ digital_library.attachment.url }}" download class="btn btn-sm btn-outline-primary mt-2">Download Attachment</a>
+    {% endif %}
+
+    <a href="{% url 'digital_library_list' %}" class="btn btn-sm btn-outline-primary mt-3">Back</a>
+  </div>
+</main>
+{% endblock %}

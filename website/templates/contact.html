@@ -1,144 +1,129 @@
 {% extends 'home.html' %}
 {% load static %}
+
 {% block content %}
 <main class="main">
 
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Contacts</h1>
+        <div class="heading">
+            <div class="container text-center">
+                <h1>Contact Us</h1>
             </div>
-          </div>
         </div>
-      </div>
-    </div><!-- End Page Title -->
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-
-      <!-- Google Maps -->
-      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
-       <iframe
-  style="border:0; width: 100%; height: 300px;"
-  src="https://maps.google.com/maps?q=Debre%20Tabor%20Polytechnic%20College&hl=en&z=15&output=embed"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-        </iframe>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <!-- Contact Info -->
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Debre Tabor</p>
-              </div>
-            </div>
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+251911180185</p>
-              </div>
-            </div>
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>dtptc@gmail.com</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="col-lg-8">
-            <form method="post" action="{% url 'contact' %}" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              {% csrf_token %}
-              <div class="row gy-4">
-                <div class="col-md-6">{{ form.name }}</div>
-                <div class="col-md-6">{{ form.email }}</div>
-                <div class="col-md-12">{{ form.subject }}</div>
-                <div class="col-md-12">{{ form.message }}</div>
-
-                <div class="col-md-12 text-center">
-                  {% if messages %}
-                    {% for message in messages %}
-                      <div class="alert alert-success">{{ message }}</div>
-                    {% endfor %}
-                  {% endif %}
-                 <div class="col-md-12 text-center">
-    <div class="loading" style="display:none;">Loading</div>
-    <div class="error-message" style="display:none;"></div>
-    <div class="sent-message" style="display:none;">Your message has been sent. Thank you!</div>
-    <button type="submit">Send Message</button>
-</div>
-                </div>
-              </div>
-              
-            </form>
-          </div><!-- End Contact Form -->
-
+        <!-- Google Maps -->
+        <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <iframe
+                style="border:0; width: 100%; height: 300px;"
+                src="https://maps.google.com/maps?q=Debre%20Tabor%20Polytechnic%20College&hl=en&z=15&output=embed"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
-      </div>
+        <div class="container">
+            <div class="row gy-4">
+
+                <!-- Contact Info -->
+                <div class="col-lg-4">
+                    <div class="info-item d-flex">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Debre Tabor</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item d-flex">
+                        <i class="bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+251911180185</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item d-flex">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>dtptc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <form method="post" action="{% url 'send_contact_email' %}" class="php-email-form">
+                        {% csrf_token %}
+                        <div class="row gy-4">
+                            <div class="col-md-6">{{ form.name }}</div>
+                            <div class="col-md-6">{{ form.email }}</div>
+                            <div class="col-md-12">{{ form.subject }}</div>
+                            <div class="col-md-12">{{ form.message }}</div>
+
+                            <!-- Messages -->
+                            <div class="col-md-12 text-center">
+                                <div class="loading" style="display:none;">Sending...</div>
+                                
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- End Contact Form -->
+
+            </div>
+        </div>
     </section>
 </main>
 {% endblock %}
+
 {% block extra_js %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('.php-email-form');
-    if (!form) return;  // avoid null errors
+    if (!form) return;
 
     const loading = form.querySelector('.loading');
-    const errorMessage = form.querySelector('.error-message');
-    const sentMessage = form.querySelector('.sent-message');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        if (loading) loading.style.display = 'block';
-        if (errorMessage) errorMessage.style.display = 'none';
-        if (sentMessage) sentMessage.style.display = 'none';
+        loading.style.display = 'block'; // show loading
 
         const formData = new FormData(form);
 
-        fetch(window.location.href, {
+        fetch(form.action, {
             method: 'POST',
             body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
+            headers: {'X-Requested-With': 'XMLHttpRequest'}
         })
-        .then(response => {
-            if (response.ok) return response.text();
-            throw new Error('Network response was not ok.');
-        })
+        .then(response => response.json())
         .then(data => {
-            if (loading) loading.style.display = 'none';
-            if (sentMessage) sentMessage.style.display = 'block';
-            form.reset();
+            loading.style.display = 'none';
+
+            if (data.success) {
+                alert(data.message);  // success message
+                form.reset();         // clear form
+                window.location.reload(); // refresh page
+            } else {
+                console.warn("⚠️ Error:", data.message);
+                if (data.errors) console.warn("Validation errors:", JSON.parse(data.errors));
+            }
         })
         .catch(error => {
-            if (loading) loading.style.display = 'none';
-            if (errorMessage) {
-                errorMessage.style.display = 'block';
-                errorMessage.innerText = "There was an error sending your message.";
-            }
-            console.error('Error:', error);
+            loading.style.display = 'none';
+            console.error("❌ AJAX error:", error);
         });
     });
 });
 </script>
+
 {% endblock %}

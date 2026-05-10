@@ -33,8 +33,13 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 DATABASES = {
     'default': dj_database_url.parse(config('DATABASE_URL'))
 }
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -76,7 +81,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # <-- your context processors
                 'website.context_processors.active_departments',
+                'website.context_processors.published_digital_libraries',
+                'website.context_processors.published_production_units',
+                'website.context_processors.published_tenders',
+                'website.context_processors.dean_message',
             ],
         },
     },

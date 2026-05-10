@@ -9,20 +9,53 @@
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
 
-      <img src="{% static 'img/662A5231.jpg' %}" alt="" data-aos="fade-in">
 
-      <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">Dedicated to providing high-quality technical and vocational training that meets industry standards and prepares students for successful careers.</p>
-        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <!--<a href="#" class="btn-get-started">Get Started</a>-->
+  <section id="hero" class="hero section dark-background">
+
+  <!-- Swiper Slider for hero images -->
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      {% for slide in hero_images %}
+        <div class="swiper-slide">
+          <img src="{{ slide.image.url }}" alt="{{ slide.title }}">
         </div>
-      </div>
+      {% endfor %}
+    </div>
 
-    </section><!-- /Hero Section -->
+    <!-- Pagination bullets -->
+    <div class="swiper-pagination"></div>
+    <script type="application/json" class="swiper-config">
+{
+  "loop": true,
+  "speed": 1000,
+  "autoplay": { "delay": 3000 },
+  "effect": "fade",
+  "slidesPerView": 1,
+  "pagination": { "el": ".swiper-pagination", "clickable": true }
+}
+</script>
+
+  </div>
+
+  <!-- Hero text -->
+  <div class="container">
+    <h2 data-aos="fade-up" data-aos-delay="100"
+        style="font-family: 'Inter', Arial, sans-serif; font-size: 32px; line-height: 1.3; margin: 0;">
+      Skill and Innovation from the Original Source
+    </h2>
+
+    <h2 data-aos="fade-up" data-aos-delay="100"
+        style="font-family: 'Noto Sans Ethiopic', 'Abyssinica SIL', serif; font-size: 34px; line-height: 1.55; margin: 0;">
+      ክህሎት እና ፈጠራ ከዋናው ምንጭ
+    </h2>
+
+    <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+      <!--<a href="#" class="btn-get-started">Get Started</a>-->
+    </div>
+  </div>
+
+</section>
 
 <!-- About Section -->
 <section id="about" class="about section">
@@ -36,14 +69,15 @@
       </div>
 
       <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-       <h3>Excellence in Education and Skill Development</h3>
+       <h3>Excellence in Technical Education</h3>
         <p class="fst-italic">
-  Debre Tabor Polytechnic College is committed to providing high-quality education, practical training, and professional development to prepare students for successful careers.
-</p>
+ Dedicated to providing high-quality technical and vocational training that meets industry standards and prepares students for successful careers.</p>
         <ul>
-          <li><i class="bi bi-check-circle"></i> <span>Practical and hands-on learning opportunities for students.</span></li>
-          <li><i class="bi bi-check-circle"></i> <span>Qualified faculty dedicated to student success.</span></li>
-          <li><i class="bi bi-check-circle"></i> <span>State-of-the-art facilities and modern laboratories to support advanced learning.</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>INCUBATION CENTER:
+These centers aim to support startups and entrepreneurs with technical skills acquired through TVET programs, often specializing in fields like engineering, manufacturing, or agriculture.</span></li>
+          <li><i class="bi bi-check-circle"></i> <span> PRODUCTION CENTER:
+TVET-based Production unit is one of the important categories of Work Based Learning (WBL) among cooperative work, field trips, internship and youth apprenticeship.</span></li>
+         
         </ul>
         <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
       </div>
@@ -57,32 +91,50 @@
 
     <!-- Counts Section -->
    <!-- Counts Section -->
-<section id="counts" class="section counts light-background">
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    <div class="row gy-4">
-      <h1 class="text-center text-primary">Statistics</h1>
-
-      {% for stat in stats %}
-        <div class="col-lg-3 col-md-6">
-          <div class="stats-item text-center w-100 h-100">
-            <span data-purecounter-start="0"
-                  data-purecounter-end="{{ stat.value }}"
-                  data-purecounter-duration="1"
-                  class="purecounter"></span>
-            <p>{{ stat.title|title }}</p> 
-          </div>
-        </div><!-- End Stats Item -->
-      {% empty %}
-        <p class="text-center">No statistics available.</p>
-      {% endfor %}
-
-    </div>
-
+<div class="swiper counts-swiper">
+  <div class="swiper-wrapper">
+    {% for stat in stats %}
+      <div class="swiper-slide col-lg-3 col-md-6">
+        <div class="stats-item text-center w-100 h-100">
+          <span data-purecounter-start="0"
+                data-purecounter-end="{{ stat.value }}"
+                data-purecounter-duration="1"
+                class="purecounter"></span>
+          <p>{{ stat.title|title }}</p> 
+        </div>
+      </div>
+    {% endfor %}
   </div>
 
-</section><!-- /Counts Section -->
+  <!-- Pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- Navigation buttons must be inside the swiper container -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Swiper JSON config -->
+  <script type="application/json" class="swiper-config">
+  {
+    "loop": true,
+    "speed": 800,
+    "autoplay": { "delay": 4000 },
+    "slidesPerView": "auto",
+    "spaceBetween": 30,
+    "pagination": { "el": ".swiper-pagination", "clickable": true },
+    "navigation": {
+      "nextEl": ".swiper-button-next",
+      "prevEl": ".swiper-button-prev"
+    },
+    "breakpoints": {
+      "320": { "slidesPerView": 1, "spaceBetween": 10 },
+      "768": { "slidesPerView": 2, "spaceBetween": 20 },
+      "1200": { "slidesPerView": 4, "spaceBetween": 30 }
+    }
+  }
+  </script>
+</div>
+
 
     <!-- Why Us Section -->
     <section id="latestnews" class="section why-us">
@@ -127,7 +179,7 @@
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Academics</h2>
-    <p>Academics Departments</p>
+    <p>Departments</p>
   </div><!-- End Section Title -->
 
   <div class="container">
@@ -186,7 +238,7 @@
 
 </section><!-- /Courses Section -->
 
-  <<!-- Testimonials Section -->
+  <!-- Testimonials Section -->
 <section id="testimonials" class="testimonials section">
 
   <!-- Section Title -->

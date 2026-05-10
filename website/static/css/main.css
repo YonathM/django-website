@@ -22,7 +22,7 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #37423b; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #5fcf80; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #37689c; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -30,11 +30,11 @@
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #272828;  /* The default color of the main navmenu links */
-  --nav-hover-color: #5fcf80; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-hover-color: #007bff; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #272828; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #5fcf80; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #0ba0db; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -90,7 +90,7 @@ h6 {
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
-  display: none;
+ display: none !important; /* force hidden */
   background: #df1529;
   color: #ffffff;
   text-align: left;
@@ -102,7 +102,7 @@ h6 {
 .php-email-form .sent-message {
   display: none;
   color: #ffffff;
-  background: #059652;
+  background: #050f96;
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
@@ -1919,4 +1919,74 @@ section,
 .swiper-pagination-bullet-active {
   background: #5fcf80;
   opacity: 1;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero-swiper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
+
+/* Swiper wrapper fixes */
+.counts-swiper .swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap; /* horizontal sliding */
+}
+
+.counts-swiper .swiper-slide {
+  width: auto; /* slide width depends on content */
+}
+
+/* Optional: make Next / Prev buttons visible */
+.swiper-button-next, .swiper-button-prev {
+  color: #007bff; /* primary color, adjust as needed */
+}
+.text-success {
+  color: #007bff !important; /* This is the standard Bootstrap Blue */
+}
+/* Mega menu container - Dynamic Alignment */
+.dropdown-menu.mega-menu {
+  display: flex !important;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 16px 0;
+  position: absolute !important;
+  
+  /* --- THE FIX --- */
+  right: 0;            /* Anchors the menu to the right edge of "Academics" */
+  left: auto !important; /* Forces the browser to ignore the default left:0 */
+  /* --------------- */
+
+  min-width: 450px;    /* Ensure enough space for 2 columns */
+  max-width: 90vw;     /* Prevents it from being wider than the phone/screen */
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  z-index: 999;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
 }

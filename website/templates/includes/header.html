@@ -66,16 +66,16 @@
       <!-- College Name -->
          <!-- College Name -->
     <div class="d-flex flex-column">
-      <small class="text-success fw-bold">ደብረ ታቦር ፖሊ ቴክኒክ ኮሌጅ</small>
-      <small class="text-success fw-bold">DEBRE TABOR POLYTECHNIC COLLEGE</small>
-    </div>
+  <small class="college-label fw-bold">ደብረ ታቦር ፖሊ ቴክኒክ ኮሌጅ</small>
+  <small class="college-label fw-bold">DEBRE TABOR POLYTECHNIC COLLEGE</small>
+</div>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
            <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
           <li class="dropdown"><a href="#"><span>Latest</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-           <li><a href="{% url 'home' %}#latestnews">News</a></li>
+           <li><a href="{% url 'home' %}#latestnews">News and Events</a></li>
             </ul>
           </li>
           
@@ -83,7 +83,8 @@
             <ul>
              <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">DTPTC Overview</a></li>
              <li><a href="{% url 'missionandvision' %}" class="{% if request.path == '/missionandvision/' %}active{% endif %}">Mission and Visson</a></li>
-            <li><a href="{% url 'contact' %}">Contact US</a></li>
+             <li><a href="{% url 'deanmessage' %}#dean-message">Dean's Message</a></li>
+             <li><a href="{% url 'contact' %}">Contact Us</a></li>
             </li>
             </ul>
           </li>
@@ -97,25 +98,16 @@
     <!-- Column 1: Departments -->
     <li class="mega-col">
     <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Departments</span></a>
-      {% for dept in header_departments %}
+     {% for dept in header_departments %}
+    {% if dept.department_type == "outcome_based" %}
         <a class="dropdown-item" href="{% url 'department' dept.pk %}">
-          {{ dept.name|title }}
+            {{ dept.name|title }}
         </a>
-      {% empty %}
-        <span class="dropdown-item-text text-muted">No departments available</span>
-      {% endfor %}
-    </li>
+    {% endif %}
+{% empty %}
+    <span class="dropdown-item-text text-muted">No departments available</span>
+{% endfor %}
 
-    <!-- Column 2: Industry Extension -->
-    <li class="mega-col">
-    <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Industry Extension</span></a>
-      {% for dept in header_departments %}
-        <a class="dropdown-item" href="{% url 'department' dept.pk %}">
-          {{ dept.name|title }}
-        </a>
-      {% empty %}
-        <span class="dropdown-item-text text-muted">No departments available</span>
-      {% endfor %}
     </li>
 
   </ul>
@@ -124,19 +116,65 @@
 
              <li class="dropdown"><a href="#"><span>Admissions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Calendar</a></li>
-              <li><a href="#">Admission</a></li>
-              <li><a href="#">Tution and Service Fees</a></li>
+              <li><a href="{% url 'tuitionfee' %}">Tution and Service Fees</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Announcements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">For Staff</a></li>
-              <li><a href="#">For Students</a></li>
              <li><a href="{% url 'vacancy_list' %}">Vacancies</a></li>
+              <li><a href="{% url 'tender_list' %}">Tender</a></li>
             </ul>
+            
           </li>
         
+             <li class="dropdown">
+  <a href="#" class="nav-link" data-bs-toggle="dropdown">
+    <span>Services</span>
+    <i class="bi bi-chevron-down toggle-dropdown"></i>
+  </a>
+
+  <ul class="dropdown-menu mega-menu">
+    
+
+    <!-- Column 2: Industry Extension -->
+    <li class="mega-col">
+    <a href="{% url 'home' %}#production-units"> <span class="dropdown-header" style="font-weight: bold; color: black;">Production services</span></a>
+      {% for unit in production_units %}
+        <a class="dropdown-item" href="{% url 'production_unit_detail' unit.id %}">
+          {{ unit.title }}
+        </a>
+      {% empty %}
+        <span class="dropdown-item-text text-muted">No production services available</span>
+      {% endfor %}
+        <!-- Column 2: Industry Extension -->
+    <li class="mega-col">
+    <a href="{% url 'home' %}#courses"> <span class="dropdown-header" style="font-weight: bold; color: black;">Industry Extension <br>
+    & Technology Transfer</span></a>
+      {% for dept in header_departments %}
+      {% if dept.department_type == "industry_extension" %}
+        <a class="dropdown-item" href="{% url 'department' dept.pk %}">
+          {{ dept.name|title }}
+        </a>
+          {% endif %}
+      {% empty %}
+        <span class="dropdown-item-text text-muted">No departments available</span>
+      {% endfor %}
+    </li>
+    </li>
+<!-- Column 1: Departments -->
+    <li class="mega-col">
+    <a href="{% url 'home' %}#digital-library"> <span class="dropdown-header" style="font-weight: bold; color: black;">Digital Library</span></a>
+     {% for dig in digital_libraries %}
+        <a class="dropdown-item" href="{% url 'digital_library_detail' dig.id %}">
+            {{ dig.title }}
+        </a>
+{% empty %}
+    <span class="dropdown-item-text text-muted">No Resources available</span>
+{% endfor %}
+
+    </li>
+  </ul>
+</li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         
